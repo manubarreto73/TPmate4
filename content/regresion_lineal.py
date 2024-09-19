@@ -18,5 +18,8 @@ def regresion_lineal(X, y):
     STC = np.sum((y - y_prom)**2)  # Suma total de cuadrados
     SCE = np.sum((y - y_pred)**2)  # Suma de los cuadrados de los errores
     R2 = 1 - (SCE / STC)
+
+    #Acá falta hacer que la función también calcule R, y también hacer el test de hipotesis sobre B1
+    #R no hay que calcularla haciendo la raiz de R2 porque perdemos el signo
     
     return R2
