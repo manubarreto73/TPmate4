@@ -1,12 +1,18 @@
 import numpy as np
 
 def regresion_lineal(X, y):
-    # Cálculo de los coeficientes de la recta de regresión (método de mínimos cuadrados)
+
+    # Cálculo de las medias
     X_prom = np.mean(X)
     y_prom = np.mean(y)
     
+    # Cálculo de las varianzas
+    sxy = np.sum((X - X_prom) * (y - y_prom))
+    sxx = np.sum((X - X_prom)**2)
+    syy = np.sum((y - y_prom)**2)
+
     # Pendiente (β1)
-    beta_1 = np.sum((X - X_prom) * (y - y_prom)) / np.sum((X - X_prom)**2)
+    beta_1 = sxy / sxx
     
     # Intersección con el eje y (β0)
     beta_0 = y_prom - beta_1 * X_prom
@@ -14,12 +20,13 @@ def regresion_lineal(X, y):
     # Predicciones
     y_pred = beta_0 + beta_1 * X
     
+    # Cálculo del coeficiente de correlación lineal
+    R  = sxy / ((sxx * syy) ** 0.5)
+
     # Cálculo del coeficiente de determinación (R^2)
+    # Este calculo no se usa porque terminé devolviendo R que es lo mismo, pero sirvió para corroborar que den lo mismo
     STC = np.sum((y - y_prom)**2)  # Suma total de cuadrados
     SCE = np.sum((y - y_pred)**2)  # Suma de los cuadrados de los errores
     R2 = 1 - (SCE / STC)
-
-    #Acá falta hacer que la función también calcule R, y también hacer el test de hipotesis sobre B1
-    #R no hay que calcularla haciendo la raiz de R2 porque perdemos el signo
     
-    return R2
+    return R

@@ -43,15 +43,15 @@ for columna_x in columnas:
     Y = df[columna_y].values
 
     # Llamar a la función de regresión lineal
-    R2 = regresion_lineal(X, Y)
+    R = regresion_lineal(X, Y)
     
     # Guardar el valor de R2 en el diccionario con la columna como clave
-    valores_R2[columna_x] = R2
+    valores_R2[columna_x] = R**2
     
     # Mostrar resultados por columna
     print(f"Regresión lineal para '{columna_x}' vs '{columna_y}':")
-    print(f"Coeficiente de determinación (R^2): {R2:.5f}\n")
+    print(f"Coeficiente de determinación (R^2): {R**2:.5f}\n")
 
 # Informar la característica más relevante
-indice_max = np.argmax(valores_R2)
-print('El atributo que más determina el precio es ' + columnas[indice_max])
+columna_max = max(valores_R2, key=valores_R2.get)
+print(f'El atributo que más determina el precio es: {columna_max}')
