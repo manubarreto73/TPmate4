@@ -28,5 +28,9 @@ def regresion_lineal(X, y):
     STC = np.sum((y - y_prom)**2)  # Suma total de cuadrados
     SCE = np.sum((y - y_pred)**2)  # Suma de los cuadrados de los errores
     R2 = 1 - (SCE / STC)
-    
+
+    #Calculos intervalos de confianza
+    print(f"El intervalo para b0 es [ {beta_0 - (-1.96009) * ((SCE/18942 * (1/len(X) + (X_prom**2) / sxx) ) ** 0.5)}, {beta_0 + (-1.96009) * ((SCE/18942 * (1/len(X) + (X_prom**2) / sxx) ) ** 0.5)} ]")
+    print(f"El intervalo para b1 es [ {beta_1 - (-1.96009) * ((((SCE/18942)**2) / sxx) ** 0.5)} , {beta_1 + (-1.96009) * ((((SCE/18942)**2) / sxx) ** 0.5)} ]")
+
     return R
