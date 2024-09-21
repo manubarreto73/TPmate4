@@ -15,3 +15,11 @@ El resultado de esta operacion es un vector de coeficientes bn que incluye tanto
 luego se calculan las predicciones del valor de mercado para cada jugador utilizando la ecuacion de regresion lineal multiple, el producto matricial X@B nos da un vector que contiene los valores de mercado predichos para cada jugador.
 
 Al final solo se comparan los valores de las predicciones con los valores reales.
+
+Se consiguieron los siguientes valores:
+Coeficiente de determinación (R²): 0.3609
+Correlación entre valores predichos y reales: 0.6007
+
+El coeficiente de determinacion R2 indica la proporcion de la varianza de la variable dependiente "value_eur", es decir, el valor del mercado. En este caso un valor de 0.3609 indica que el 36.09% de la variabilidad en el valor de mercado de los jugadores puede ser explicada por las caracteristicas seleccionadas en el modelo. Es decir, el 63.91% de la variabilidad en el valor del mercado NO esta explicada por el modelo. Esto sugiere que el modelo es capaz de capturar una gran porcion de las variaciones en el valor de mercado pero que aun hay una cantidad considerable que el modelo no explica y que por lo tanto las caracteristicas elegidas no capturan las variables que influyen el valor de mercado, es decir, se podrian considerar mas u otras variables para mejorar el modelo.
+
+por otro lado la correlacion entre valores predichos y reales mide la relacion lineal entre las predicciones del modelo y los valores reales. Un valor del 0.6007 indica una correlacion moderada entre los valores predichos y los valores reales, es decir que el modelo tiene capacidad predictiva pero hay margen para mejorar.

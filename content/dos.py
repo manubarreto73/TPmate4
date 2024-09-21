@@ -61,7 +61,19 @@ y_pred = X @ beta  # Producto matricial entre X y los coeficientes β
 # La predicción se realiza multiplicando la matriz X (que contiene las características de cada jugador)
 # por el vector de coeficientes β. Esto nos da las predicciones de los valores de mercado para cada jugador.
 
-# 9. Mostrar las primeras 5 predicciones junto a los valores reales
+# 9. Calcular el coeficiente de determinación (R²)
+STC = np.sum((y - np.mean(y)) ** 2)  # Suma total de cuadrados
+SCE = np.sum((y - y_pred) ** 2)  # Suma de cuadrados residuales
+R2 = 1 - (SCE / STC)  # Cálculo de R²
+
+print(f"\nCoeficiente de determinación (R²): {R2:.4f}")
+
+# 10. Calcular la correlación entre y y y_pred
+correlation_matrix = np.corrcoef(y, y_pred)
+correlation = correlation_matrix[0, 1]  # Obtener la correlación de la matriz
+print(f"Correlación entre valores predichos y reales: {correlation:.4f}")
+
+# 11. Mostrar las primeras 5 predicciones junto a los valores reales
 print("\nPredicciones y valores reales:")
 for i in range(10):
     print(f"Jugador {i+1}: Valor predicho: {y_pred[i]:.2f}, Valor real: {y[i]:.2f}")
