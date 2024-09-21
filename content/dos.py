@@ -63,6 +63,6 @@ y_pred = X @ beta  # Producto matricial entre X y los coeficientes β
 
 # 9. Mostrar las primeras 5 predicciones junto a los valores reales
 print("\nPredicciones y valores reales:")
-for i in range(5):
+for i in range(10):
     print(f"Jugador {i+1}: Valor predicho: {y_pred[i]:.2f}, Valor real: {y[i]:.2f}")
 
