@@ -3,7 +3,7 @@ from regresion_lineal import regresion_lineal
 from typing import Dict
 
 # Ruta al archivo CSV
-file_path = 'players_21.csv'
+file_path = 'content\players_21.csv'
 
 # Leer el archivo CSV
 df = pd.read_csv(file_path)
@@ -43,7 +43,7 @@ for columna_x in columnas:
     Y = df[columna_y].values
 
     # Llamar a la función de regresión lineal
-    R = regresion_lineal(X, Y)
+    R = regresion_lineal(columna_x, X, Y)
     
     # Guardar el valor de R2 en el diccionario con la columna como clave
     valores_R2[columna_x] = R**2 if R is not None else 0.0 # Me aseguro que R es un float

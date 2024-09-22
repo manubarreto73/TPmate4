@@ -1,6 +1,6 @@
 import numpy as np
 
-def regresion_lineal(X, y):
+def regresion_lineal(atributo, X, y):
 
     # Cálculo de las medias
     X_prom = np.mean(X)
@@ -30,7 +30,13 @@ def regresion_lineal(X, y):
     R2 = 1 - (SCE / STC)
 
     #Calculos intervalos de confianza
-    print(f"El intervalo para b0 es [ {beta_0 - (-1.96009) * ((SCE/18942 * (1/len(X) + (X_prom**2) / sxx) ) ** 0.5)}, {beta_0 + (-1.96009) * ((SCE/18942 * (1/len(X) + (X_prom**2) / sxx) ) ** 0.5)} ]")
-    print(f"El intervalo para b1 es [ {beta_1 - (-1.96009) * ((((SCE/18942)**2) / sxx) ** 0.5)} , {beta_1 + (-1.96009) * ((((SCE/18942)**2) / sxx) ** 0.5)} ]")
-
+    if (atributo == 'movement_reactions'):
+        varianza = SCE / 18942
+        estadistico_prueba = beta_1 / ((varianza / sxx) ** 0.5)
+        print(f"El intervalo para b0 es [ {beta_0 - (1.96009) * ((varianza * (1/len(X) + (X_prom**2) / sxx) ) ** 0.5)}, {beta_0 + (1.96009) * ((varianza * (1/len(X) + (X_prom**2) / sxx) ) ** 0.5)} ]")
+        print(f"El intervalo para b1 es [ {beta_1 - (1.96009) * ((varianza / sxx) ** 0.5)} , {beta_1 + (1.96009) * ((varianza / sxx) ** 0.5)} ]")
+        #Considerando ancho minimo
+        error_de_prediccion = 1.96009 * ((varianza * (1 + 1/len(X))) ** 0.5)
+        error_de_confianza = 1.96009 * ((varianza * (1/len(X))) ** 0.5)
+        print(f"La proporción para el punto c es {error_de_prediccion / error_de_confianza}")
     return R
