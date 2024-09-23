@@ -39,4 +39,5 @@ def regresion_lineal(atributo, X, y):
         error_de_prediccion = 1.96009 * ((varianza * (1 + 1/len(X))) ** 0.5)
         error_de_confianza = 1.96009 * ((varianza * (1/len(X))) ** 0.5)
         print(f"La proporción para el punto c es {error_de_prediccion / error_de_confianza}")
+        print("")
     return R

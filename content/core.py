@@ -3,7 +3,7 @@ from regresion_lineal import regresion_lineal
 from typing import Dict
 
 # Ruta al archivo CSV
-file_path = 'content\players_21.csv'
+file_path = 'players_21.csv'
 
 # Leer el archivo CSV
 df = pd.read_csv(file_path)
@@ -30,6 +30,7 @@ columnas = [
 columna_y = 'value_eur'
 
 # Lista para guardar los coeficientes de determinación R^2
+valores_R: Dict[str, float] = {}
 valores_R2: Dict[str, float] = {}
 
 # Loop por cada columna especificada en 'columnas'
@@ -46,10 +47,12 @@ for columna_x in columnas:
     R = regresion_lineal(columna_x, X, Y)
     
     # Guardar el valor de R2 en el diccionario con la columna como clave
+    valores_R[columna_x] = R
     valores_R2[columna_x] = R**2 if R is not None else 0.0 # Me aseguro que R es un float
     
     # Mostrar resultados por columna
     print(f"Regresión lineal para '{columna_x}' vs '{columna_y}':")
+    print(f"Correlacion lineal (R): {R:.5f}")
     print(f"Coeficiente de determinación (R^2): {R**2:.5f}\n")
 
 # Informar la característica más relevante
