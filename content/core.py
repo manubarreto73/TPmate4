@@ -26,13 +26,12 @@ columnas = [
     'goalkeeping_kicking', 'goalkeeping_positioning', 'goalkeeping_reflexes'
 ]
 
-# Definir la columna dependiente (y) para todas las regresiones
+# Definimos la columna dependiente para todas las regresiones, que va a ser el valor en euros del jugador
 columna_y = 'value_eur'
 
-# Lista para guardar los coeficientes de determinación R^2
 valores_R2: Dict[str, float] = {}
 
-# Loop por cada columna especificada en 'columnas'
+# Ejecutamos un loop por cada columna o atributo que tiene el jugador, y vamos calculando y guardando los valores del determinante para compararlos despues
 for columna_x in columnas:
 
     df[columna_x] = pd.to_numeric(df[columna_x], errors='coerce')
@@ -42,7 +41,7 @@ for columna_x in columnas:
     X = df[columna_x].values
     Y = df[columna_y].values
 
-    # Llamar a la función de regresión lineal
+    # Llamado a la función de regresión lineal donde calculamos los datos
     R = regresion_lineal(columna_x, X, Y)
     
     # Guardar el valor de R2 en el diccionario con la columna como clave
@@ -52,6 +51,6 @@ for columna_x in columnas:
     print(f"Regresión lineal para '{columna_x}' vs '{columna_y}':")
     print(f"Coeficiente de determinación (R^2): {R**2:.5f}\n")
 
-# Informar la característica más relevante
+# Hallamos e informamos la característica más relevante
 columna_max = max(valores_R2, key=lambda k: valores_R2.get(k, 0.0))
 print(f'El atributo que más determina el precio es: {columna_max}')
