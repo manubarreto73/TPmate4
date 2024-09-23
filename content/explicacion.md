@@ -9,4 +9,13 @@ En resumen, estos elementos indican que la característica elegida es un predict
 
 Punto Uno C:
 
+Para este inciso queremos hallar la proporción de veces que supera el error de la predicción de calidad al de la  respuesta media de calidad para una característica fija, considerando un ancho mínimo y el mismo nivel de confianza. Llamamos error al termino que se resta o suma a la media en ambos intervalos, siendo este *formula uno* para la prediccion y *formula dos* para la respuesta media.
+Dado que se nos pide considerar un ancho mínimo y el ancho del intervalo depende de x*, vamos a considerar un x* igual a la media de x, lo cual minimiza el intervalo ya que hace valer cero al termino que las contiene.
+Por lo tanto, la operacion final para calcular la proporción nos queda de la siguiente forma:
+
+*Formula 3*
+
+Dandonos como resultado 137.64083696345352
+
+
 Dado que el enunciado pide buscar la proporción considerando ancho mínimo, consideramos un x* igual al promedio de los x, haciendo que el término donde se restan sea igual a 0, y en consecuencia minimizando el valor del error. Calculamos la proporción dividiendo el error de la predicción para futuros valores de x por el error de la respuesta media.
